@@ -35,6 +35,8 @@ def main():
 
 	finished = 0
 	total_iter = 0
+	
+	overall_high_score = 0
 
 	while finished == 0:
 
@@ -54,9 +56,13 @@ def main():
 				
 			i = i + 1
 			total_iter = total_iter + 1
+		
+		if high_score > overall_high_score:
+			overall_high_score = high_score
+			overall_best_attempt = best_attempt
 
-		print "High Score of Block:", high_score
-		print "Best Attempt of Block:", best_attempt
+		print "High Score of Block:", high_score, " (Previous High Score: ", overall_high_score, ")"
+		print "Best Attempt of Block:", best_attempt, " (Previous Best Attempt: ", overall_best_attempt, ")"
 		print
 
 	print "Total Iterations:", total_iter
