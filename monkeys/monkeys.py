@@ -31,16 +31,21 @@ def compare_string(target, attempt):
 def main():
 
 	# Target String:
-	t = "apple"
+	t = "best beer"
+	t_score = len(t)
+	attempts = 100000
 
 	finished = 0
 	total_iter = 0
 	
 	overall_high_score = 0
 
+	print "Target:", t
+	print "Target Score:", t_score
+	print
+
 	while finished == 0:
 
-		attempts = 10000
 		high_score = 0
 		i = 0
 		print "Iteration starting:", total_iter
