@@ -50,6 +50,12 @@ class Duck(object):
 	def performFly(self):
 		self.flyBehavior.fly()
 
+	def setFlyBehavior(self, fb):
+		self.flyBehavior = fb
+
+	def setQuackBehavior(self, qb):
+		self.quackBehavior = qb
+
 	def swim(self):
 		print "All ducks float, even decoys"
 
@@ -72,5 +78,10 @@ if __name__ == "__main__":
 	md.performFly()
 	md.performQuack()
 	
+	print "Model Duck"
 	model = ModelDuck()
+	model.performFly()
+
+	print "Model Duck"
+	model.setFlyBehavior(FlyWithWings())
 	model.performFly()
