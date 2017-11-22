@@ -6,3 +6,5 @@ refuse pile of exercises + junk
 ./ducksim - ducksimulator demonstrating use of **strategy pattern** and ABC
 
 ./sorting - sorting algorithms
+
+./factory - a couple of python factory examples
