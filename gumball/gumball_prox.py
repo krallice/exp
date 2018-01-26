@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+import json
 from gumball_state import GumballMachine
 
 # Proxy Design Pattern
@@ -32,6 +33,22 @@ class GumballSuperMonitor(object):
             print "Gumball Machine #%s" % (index)
             gbm.report()
 
+# Decorator:
+# Decorator of Composite of Proxies
+class GumballSuperMonitorJSON(GumballSuperMonitor):
+
+    def __init__(self, gbsm):
+
+        self.gbsm = gbsm
+        
+    def report(self):
+
+        print "{"
+        print ' "faked json": "'
+        self.gbsm.report()
+        print '"'
+        print '}'
+
 if __name__ == "__main__":
 
     gb_list = []
@@ -46,5 +63,9 @@ if __name__ == "__main__":
 
     gb_list[1].insert_quarter()
 
-    gbsm.report()
-
+    print
+    print
+    print "JSON Decorator: GumballSuperMonitorJSON"
+    gbsm_j = GumballSuperMonitorJSON(gbsm)
+    gbsm_j.report()
+    print
