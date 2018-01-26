@@ -84,7 +84,7 @@ class SoldOutState(GumballState):
 
 class GumballMachine(object):
 
-    def __init__(self, count=2):
+    def __init__(self, count=2, location="undefined"):
 
         self.count = count
         self.has_quarter_state = HasQuarterState(self)
@@ -93,6 +93,8 @@ class GumballMachine(object):
         self.sold_out_state = SoldOutState(self)
 
         self.state = self.no_quarter_state
+
+        self.location = location
 
     def insert_quarter(self):
 
@@ -112,20 +114,37 @@ class GumballMachine(object):
         print "Releasing Gumball"
         self.count = self.count - 1
 
+    # Getters:
+    def get_count(self):
+
+        return self.count
+
+    def get_state(self):
+
+        return self.state.__class__.__name__
+
+    def get_location(self):
+
+        return self.location
+
 if __name__ == "__main__":
 
     gb = GumballMachine()
+    print gb.get_state()
     gb.insert_quarter()
     gb.insert_quarter()
     gb.insert_quarter()
+    print gb.get_state()
     gb.eject_quarter()
     gb.eject_quarter()
     gb.insert_quarter()
     gb.insert_quarter()
     gb.turn_crank()
+    print gb.get_state()
     gb.turn_crank()
     gb.insert_quarter()
     gb.turn_crank()
+    print gb.get_state()
     gb.insert_quarter()
     gb.turn_crank()
 
