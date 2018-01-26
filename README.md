@@ -8,3 +8,5 @@ refuse pile of exercises + junk
 ./sorting - sorting algorithms
 
 ./factory - a couple of python factory examples
+
+./gumball - state machine
