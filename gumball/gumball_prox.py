@@ -2,6 +2,7 @@
 
 from gumball_state import GumballMachine
 
+# Proxy Design Pattern
 class GumballMonitor(object):
 
     def __init__(self, gumballmachine):
@@ -14,6 +15,8 @@ class GumballMonitor(object):
         print 'Gumball State: %s' % (self.machine.get_state())
         print 'Gumball Count: %s' % (self.machine.get_count())
 
+# Composite Design Pattern:
+# (Composite of Proxies)
 class GumballSuperMonitor(object):
 
     def __init__(self, gumballmachinelist):
@@ -38,5 +41,10 @@ if __name__ == "__main__":
     gb_list.append(GumballMachine(5, "Fairfield"))
 
     gbsm = GumballSuperMonitor(gb_list)
+    gbsm.report()
+    print
+
+    gb_list[1].insert_quarter()
+
     gbsm.report()
 
