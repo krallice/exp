@@ -14,3 +14,7 @@ refuse pile of exercises + junk
 + ./ducksim - ducksimulator demonstrating use of **strategy pattern** and ABC
 + ./factory - a couple of python factory examples
 + ./gumball - state machine
+
+### cs
+
++ ./cs - more structured learning
