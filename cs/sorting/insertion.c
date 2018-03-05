@@ -5,13 +5,6 @@
 
 #define NELEMS(x)  (sizeof(x) / sizeof((x)[0]))
 
-void insertion_sort(int ar[], int size) {
-
-	
-
-
-}
-
 void dump_array(int ar[], int size) {
 	for (int i = 0; i < size; i++) {
 		printf("%d ", ar[i]);
