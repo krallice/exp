@@ -17,3 +17,5 @@ The merge sort algorithm closely follows the divide-and-conquer paradigm (based 
 + Divide: Divide the n-element sequence to be sorted into two subsequences of n=2 elements each.
 + Conquer: Sort the two subsequences recursively using merge sort.
 + Combine: Merge the two sorted subsequences to produce the sorted answer.
+
+Complexity = O(n log n)
