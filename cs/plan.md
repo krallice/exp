@@ -50,3 +50,8 @@ http://ressources.unisciel.fr/algoprog/s00aaroot/aa00module1/res/%5BCormen-AL201
 
 https://inspirit.net.in/books/placements/Cracking%20the%20Coding%20Interview.pdf
 
+- - -
+
+## my repo:
+
+[a sorting](sorting/sorting.md)
