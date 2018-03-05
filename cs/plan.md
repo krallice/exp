@@ -1,22 +1,32 @@
-What to Study
+## Study List One:
 
-# First Round:
+### First Round:
+
 Trees (especially Binary Search Trees)
+
 Big O Notation
+
 Hash Tables
+
 Object Oriented Design/Systems Design
+
 Algorithms: Breadth First Search/Depth First Search, Binary Search, Merge Sort and Quick Sort
 
-# Second Round:
+### Second Round:
+
 Arrays
+
 Recursion
+
 Linked Lists
+
 Stacks/Queues
+
 Bit Manipulation
 
 ###
 
-Tech Prep Tips
+## Tech Prep Tips
 
 The best tip is: go get a computer science degree. The more computer science you have, the better. You don't have to have a CS degree, but it helps. It doesn't have to be an advanced degree, but that helps too.
 
