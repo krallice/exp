@@ -42,6 +42,8 @@ You should know about tree traversal algorithms: BFS and DFS, and know the diffe
 
 You might not use trees much day-to-day, but if so, it's because you're avoiding tree problems. You won't need to do that anymore once you know how they work. Study up!
 
+- - -
+
 ## Resources:
 
 http://ressources.unisciel.fr/algoprog/s00aaroot/aa00module1/res/%5BCormen-AL2011%5DIntroduction_To_Algorithms-A3.pdf
