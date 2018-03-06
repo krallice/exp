@@ -10,10 +10,7 @@ for i = second_index -> end_of_array:
         descend in comparisons from j & (j - 1). If out of order, swap.
         decrement j
 ```
-
-
-Complexity = O(n^2) (Same as bubble == bad)
-Represents an incremental approach to Algorithms.
+Complexity = O(n^2) (Same as bubble == bad). Represents an incremental approach to Algorithms.
 
 Why even use:
 
@@ -46,6 +43,7 @@ if array.size > 1:
         depleted either left or right, copy the rest of the remaining pile to our master array
 ```
 Complexity = O(n log n)
+
 Out of Place
 
 - - -
@@ -83,4 +81,5 @@ partition(array, lo, hi)
     return i+1
 ```
 Complexity = O(n log n)
+
 In place, generally faster than Merge sort
