@@ -14,4 +14,4 @@ quick:
 	$(CC) -g -ansi -std=gnu99 -Wall quick.c -o quick
 
 clean:
-	rm -rf insertion merge
+	rm -rf insertion merge quick
