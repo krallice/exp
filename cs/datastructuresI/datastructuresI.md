@@ -1,5 +1,5 @@
-## Heaps
-### Basic Heaps
+## Basic Heaps
+### Intro
 
 The (binary) heap data structure is an array object that we can view as a
 nearly complete binary tree. Each node of the tree corresponds to an element of the array. The tree is completely filled on all levels except possibly the lowest, which is filled from the left up to a point. An array A that represents a heap is an object with two attributes:
@@ -9,3 +9,9 @@ nearly complete binary tree. Each node of the tree corresponds to an element of 
 in A:heap-size, where 0 <= A:heap-size <= A:length, are valid elements of the heap. The root of the tree is A[1], and given the index i of a node, we can easily compute the indices of its parent, left child, and right child:
 
 ![alt text](https://i1.wp.com/algorithms.tutorialhorizon.com/files/2015/02/Max-Heap.png "Max Heap")
+
+There are two kinds of binary heaps: max-heaps and min-heaps. In both kinds,the values in the nodes satisfy a heap property, the specifics of which depend onthe kind of heap. In a *max-heap*, the max-heap property is that for every node other than the root:
+```
+A[PARENT(i)] >= A[i]
+```
+Thus, the largest element in a max-heap is stored at the root, and the subtree rooted at a node contains values no larger than that contained at the node itself. A min-heap is organized in the opposite way.
