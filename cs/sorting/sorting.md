@@ -1,4 +1,4 @@
-#### O(n^2) -- The Worst
+## O(n^2) -- The Worst
 ### Insertion Sort:
 
 Insertion sort works by considering the first index as sorted. Then, from the second index -> end of array:
@@ -21,7 +21,7 @@ Why even use:
 
 - - -
 
-#### O(n log n) -- Getting better now!
+## O(n log n) -- Getting better now!
 ### Merge Sort:
 
 The merge sort algorithm closely follows the divide-and-conquer paradigm (based on recursion). Intuitively, it operates as follows:
