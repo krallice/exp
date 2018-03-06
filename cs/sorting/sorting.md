@@ -37,7 +37,7 @@ The merge sort algorithm closely follows the divide-and-conquer paradigm (based 
 ```
 if array.size > 1:
     calculate midpoint
-    divide array into 2 slices around the midpoint
+    divide array into 2 slices (2 subarrays) around the midpoint
     recursively call same function on each slice (left and right)
 	
     // descending up the recursion:
@@ -46,6 +46,7 @@ if array.size > 1:
         depleted either left or right, copy the rest of the remaining pile to our master array
 ```
 Complexity = O(n log n)
+Out of Place
 
 - - -
 
@@ -81,3 +82,5 @@ partition(array, lo, hi)
     swap array[i+1] and array[hi]
     return i+1
 ```
+Complexity = O(n log n)
+In place, generally faster than Merge sort
