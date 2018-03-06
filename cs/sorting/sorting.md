@@ -27,3 +27,8 @@ The merge sort algorithm closely follows the divide-and-conquer paradigm (based 
 	+ depleted either left or right, copy the rest of the remaining pile to our master array
 
 Complexity = O(n log n)
+
+### Quick Sort:
+
+
+Quicksort, in Chapter 7, also sorts n numbers in place, but its worst-case running time is O(n^2). Its expected running time is O(n log n), however, and it generally outperforms heapsort in practice. Like insertion sort, quicksort has tight code, and so the hidden constant factor in its running time is small. It is a popular algorithm for sorting large input arrays
