@@ -3,10 +3,14 @@
 
 Insertion sort works by considering the first index as sorted. Then, from the second index -> end of array:
 
-+ look at array[i]:
-	+ inner loop j = i; while j > 0 and out of order:
-		+ descend in comparisons from j & (j - 1). If out of order, swap.
-		+ decrement j
+```
+for i = second_index -> end_of_array:
+    look at array[i]:
+    inner loop j = i; while j > 0 and out of order:
+        descend in comparisons from j & (j - 1). If out of order, swap.
+        decrement j
+```
+
 
 Complexity = O(n^2) (Same as bubble == bad)
 Represents an incremental approach to Algorithms.
@@ -30,16 +34,17 @@ The merge sort algorithm closely follows the divide-and-conquer paradigm (based 
 + Conquer: Sort the two subsequences recursively using merge sort.
 + Combine: Merge the two sorted subsequences to produce the sorted answer.
 
-+ if array.size > 1:
-	+ calculate midpoint
-	+ divide array into 2 slices around the midpoint
-	+ recursively call same function on each slice (left and right)
+```
+if array.size > 1:
+    calculate midpoint
+    divide array into 2 slices around the midpoint
+    recursively call same function on each slice (left and right)
 	
-	+ descending up the recursion:
-	+ track an index for the right and left arrays; and while not run out of indexes in right or left slice (which has been sorted in recursive call):
-		+ copy the smaller of the two into our master array
-	+ depleted either left or right, copy the rest of the remaining pile to our master array
-
+    // descending up the recursion:
+    track an index for the right and left arrays; and while not run out of indexes in right or left slice (which has been sorted in recursive call):
+        copy the smaller of the two into our master array
+        depleted either left or right, copy the rest of the remaining pile to our master array
+```
 Complexity = O(n log n)
 
 - - -
@@ -54,26 +59,25 @@ Quicksort, in Chapter 7, also sorts n numbers in place, but its worst-case runni
 
 Pseudocode:
 
-+ quick(array, lo, hi)
-+ quick:
-	+ if low < high:
+```
+quick(array, lo, hi)
+    if low < high:
+        p = partition(array, lo, hi)
+        quick(array, low, p - 1)
+        quick(array, p + 1, hi)
 
-	+ p = partition(array, lo, hi)
-	+ quick(array, low, p - 1)
-	+ quick(array, p + 1, hi)
+partition(array, lo, hi)
+    pivot = array[hi]
+    i = lo - 1
+    // If our array slice element is less than our pivot value, 
+    // slam it down the start of the array (i will always be lesser or equal to j):
+    for j = lo --> high:
+        if array[j] < pivot:
+            increment i
+            swap array[i] and array[j]
 
-+ partition(array, lo, hi)
-
-	+ pivot = array[hi]
-	+ i = lo - 1
-
-	+ // If our array slice element is less than our pivot value, slam it down the start of the array (i will always be lesser or equal to j):
-	+ for j = lo --> high:
-		+ if array[k] < pivot:
-			+ increment i
-			+ swap array[i] and array[j]
-
-	+ // At this stage a[0..i] < pivot_value;
-        + // Now set a[i+1] = pivot_value, and return this index
-	+ swap array[i+1] and array[hi]
-	+ return i+1
+    // At this stage a[0..i] < pivot_value;
+    // Now set a[i+1] = pivot_value, and return this index
+    swap array[i+1] and array[hi]
+    return i+1
+```
