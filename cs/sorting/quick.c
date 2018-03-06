@@ -56,7 +56,7 @@ int main(void) {
 	int arsize = (sizeof(ar)/sizeof(ar[0]));
 
 	dump_array(ar, arsize);
-	quick_sort(ar, 0, arsize - 1);
+
 	printf("\n");
 	dump_array(ar, arsize);
 
