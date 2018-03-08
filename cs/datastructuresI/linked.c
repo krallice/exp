@@ -10,10 +10,16 @@ typedef struct node {
 	struct node *next;
 } node;
 
+// Prototypes:
+node *create_linked_list(int size);
+void dump_linked_list(node *head);
+node *delete_by_key(node *head, int key);
+
 node *create_linked_list(int size) {
 
 	node *head = (node*)malloc(sizeof(node));
 
+	// Prepare head, 1MB data usage in .data:
 	head->key = 0;
 	head->next = NULL;
 	head->data = (char*)malloc(1024*1024);
@@ -23,11 +29,13 @@ node *create_linked_list(int size) {
 
 	for (int i = 1; i < LINKED_LIST_SIZE; i++) {
 
+		// New node:
 		node *new = (node*)malloc(sizeof(node));
 		new->key = i;
 		new->data = (char*)malloc(1024*1024);
 		memset(new->data, new->key, 1024*1024);
 
+		// Link and Iterate:
 		prev->next = new;
 		prev = new;
 	}	
@@ -77,7 +85,7 @@ node *delete_by_key(node *head, int key) {
 int main (void) {
 
 	node *head = create_linked_list(LINKED_LIST_SIZE);
-	
+
 	int delkeys[] = {7, 0, 63, 20, 21, 22, 23, 2, 24};
 	for (int i = 0; i < 9; i++) {
 		printf("Delete Key %d\n", delkeys[i]);
