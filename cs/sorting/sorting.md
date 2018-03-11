@@ -147,3 +147,21 @@ Counting sort is an algorithm that takes an array A of n elements in the range {
 
 
 Once we have C, we can construct the sorted version of A by iterating through C and inserting each element j a total of C[j] times into a new list (or A itself). Iterating through C takes O(k) time. The end result is a sorted A and in total it took O(n + k) time to do so.
+
+
+```
+STABLE_SORT(a, k(aka max value)):
+    build array c (0 --> k)
+    // build histogram c, iterating through a and incrementing values in c:
+    for j = 0 --> a.length:
+        c[a[j]]++
+    // transform c, at any point i in c, many elements are <= i in a?:
+    for i = 0 --> k:
+        c[i] += c[i - 1]
+    // descend through a, foreach value in a, place into correct index val into sorted_array:
+    for j = a.length --> 0:
+        sorted_array[c[a[j]]] = a[j]
+	c[a[j]] = c[a[j]] - 1
+```
+	
+    
