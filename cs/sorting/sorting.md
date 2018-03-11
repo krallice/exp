@@ -24,6 +24,10 @@ Why even use:
 
 ## O(n log n) -- Getting better now!
 ### Merge Sort:
+```
+Type: Comparitive Sort.
+Time Complexity: O(n log n) in worst.
+```
 
 The merge sort algorithm closely follows the divide-and-conquer paradigm (based on recursion). Intuitively, it operates as follows:
 
@@ -49,6 +53,10 @@ Out of Place
 - - -
 
 ### Quick Sort:
+```
+Type: Comparitive Sort.
+Time Complexity: O(n log n) on average. *O(n^2) in worst*
+```
 
 Quicksort, in Chapter 7, also sorts n numbers in place, but its worst-case running time is O(n^2). Its expected running time is O(n log n), however, and it generally outperforms heapsort in practice. Like insertion sort, quicksort has tight code, and so the hidden constant factor in its running time is small. It is a popular algorithm for sorting large input arrays.
 
@@ -87,7 +95,10 @@ In place and generally faster than Merge sort
 - - -
 
 ### Heap Sort:
-
+```
+Type: Comparitive Sort
+Time Complexity: O(n log n) in worst.
+```
 The heapsort algorithm starts by using BUILD-MAX-HEAP to build a max-heap on the input array a[1..n], where n = a.length. Since the maximum element of the array is stored at the root a[1], we can put it into its correct final position by exchanging it with a[n]. If we now discard node n from the heap (and we can do so by simply decrementing a.heapsize) — we observe that the children of the root remain max-heaps, but the new root element might violate the max-heap property. All we need to do to restore the max-heap property, however, is call MAX-HEAPIFY(a, 1), which leaves a max-heap in a(1 ..n-1). The heapsort algorithm then repeats this process for the max-heap of size n-1 down to a heap of size 2.
 
 Indexed Array | Left() | Right() | Parent()
@@ -119,6 +130,5 @@ MAX-HEAPIFY(a, i):
     if largest != i:
         exchange a[i] with a[largest]
 	MAX-HEAPIFY(a, i)
-```
-    
+``` 
 Usually beaten by quicksort
