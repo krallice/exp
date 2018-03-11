@@ -1,3 +1,4 @@
+## Comparison Sorts:
 ## O(n^2) -- The Worst
 ### Insertion Sort:
 
@@ -132,3 +133,17 @@ MAX-HEAPIFY(a, i):
 	MAX-HEAPIFY(a, i)
 ``` 
 Usually beaten by quicksort
+
+- - -
+
+## Non-Comparison Sorts:
+## O(n+k) -- Pretty Good
+### Counting Sort
+
+Counting sort is an algorithm that takes an array A of n elements in the range {1, 2, ..., k} andsorts the array in O(n + k) time. Counting sort uses no comparisons and uses the fact that the n elements are in a limited range to beat the O(n log n) limit of comparison sorts.
+
+
+**Algorithm**: Counting sort keeps an auxiliary array C with k elements, all initialized to 0. We make one pass through the input array A and for each element i in A that we see, we increment C[i] by 1. After we iterate through the n elements of A and update C, the value at index j of C corresponds to how many times j appeared in A. This step takes O(n) time to iterate through A.
+
+
+Once we have C, we can construct the sorted version of A by iterating through C and inserting each element j a total of C[j] times into a new list (or A itself). Iterating through C takes O(k) time. The end result is a sorted A and in total it took O(n + k) time to do so.
