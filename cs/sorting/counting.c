@@ -41,16 +41,54 @@ void counting_sort(int ar[], int size, int sorted[], int maxvalue) {
 	}
 }
 
+// Our stable version which does not re-order similar valued items:
+void stable_counting_sort(int ar[], int size, int sorted[], int maxvalue) {
+	
+	// Init our counting index to 0;
+	int c[maxvalue + 1];
+	for (int i = 0; i <= maxvalue; i++) {
+		c[i] = 0;
+	}
+
+	// Create a histogram, each value in ar,
+	// increment the matching index value in the histogram array:
+	for (int j = 0; j < size; j++) {
+		c[ar[j]] = c[ar[j]] + 1;
+	}
+
+	dump_array(c, maxvalue + 1);
+	printf("\n");
+
+	/*
+	 * We transform C to an array where C[j] refers to how many elements are
+	 * = j. We do this by iterating through C and adding the value at the previous index to the value at
+	 * the current index, since the number of elements = j is equal to the number of elements = j - 1
+	 * (i.e. the value at the previous index) plus the number of elements = j (i.e. the value at the current
+	 * index). The final result is a matrix C where the value of C[j] is the number of elements = j in A.
+	 */	
+	for (int i = 0; i <= maxvalue; i++) {
+		c[i] = c[i] + c[i - 1];
+	}
+	dump_array(c, maxvalue + 1);
+	printf("\n");
+
+	for (int j = size - 1; j >= 0; j--) {
+		printf("%d\n", ar[j]);
+		sorted[c[ar[j]] - 1] = ar[j];
+		c[ar[j]] = c[ar[j]] - 1;
+	}
+}
+
 int main(void) {
 
-	int ar[ARRAY_SIZE] = { 1, 19, 254, 11, 25, 11, 12, 3 };
+	int ar[ARRAY_SIZE] = { 4, 19, 254, 11, 25, 11, 12, 3 };
 	int arsize = sizeof(ar)/sizeof(int);
 
 	int sorted[arsize];
 	int maxvalue = 254;
 
 	dump_array(ar, arsize);
-	counting_sort(ar, arsize, sorted, maxvalue);
+	stable_counting_sort(ar, arsize, sorted, maxvalue);
 	printf("\n");
 	dump_array(sorted, arsize);
 
