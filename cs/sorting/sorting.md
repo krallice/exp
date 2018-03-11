@@ -1,5 +1,5 @@
 ## O(n^2) -- The Worst
-### Insertion Sort:
+### Selection Sort
 
 Insertion sort works by considering the first index as sorted. Then, from the second index -> end of array:
 
@@ -82,4 +82,43 @@ partition(array, lo, hi)
 ```
 Complexity = O(n log n)
 
-In place, generally faster than Merge sort
+In place and generally faster than Merge sort
+
+- - -
+
+### Heap Sort:
+
+The heapsort algorithm starts by using BUILD-MAX-HEAP to build a max-heap on the input array a[1..n], where n = a.length. Since the maximum element of the array is stored at the root a[1], we can put it into its correct final position by exchanging it with a[n]. If we now discard node n from the heap (and we can do so by simply decrementing a.heapsize) — we observe that the children of the root remain max-heaps, but the new root element might violate the max-heap property. All we need to do to restore the max-heap property, however, is call MAX-HEAPIFY(a, 1), which leaves a max-heap in a(1 ..n-1). The heapsort algorithm then repeats this process for the max-heap of size n-1 down to a heap of size 2.
+
+Indexed Array | Left() | Right() | Parent()
+--- | --- | --- | ---
+1 indexed | 2i | 2i + 1 | i / 2
+0 indexed | 2i + 1 | 2i + 2 | (i + 1) / 2 
+
+```
+HEAPSORT(a):
+    BUILD-MAX-HEAP(a)
+    for i = a.Length to 2
+    exchange a[i] with a[1]
+    a.heap_size--
+    MAX-HEAPIFY(a, 1)
+    
+BUILD-MAX-HEAP(a):
+    a.heap_size = a.length
+    for i = (a.length) / 2 downto 1:
+        MAX-HEAPIFY(a, i)
+    
+MAX-HEAPIFY(a, i):
+    l = LEFT(i)
+    r = RIGHT(i)
+    if l < a.heap_size and a[l] > a[i]:
+        largest = l
+    else largest = i
+    if r < a.heap_size and a[r] > a[largest]:
+        largest = r
+    if largest != i:
+        exchange a[i] with a[largest]
+	MAX-HEAPIFY(a, i)
+```
+    
+Usually beaten by quicksort
