@@ -57,6 +57,7 @@ int main(void) {
 
 	dump_array(ar, arsize);
 
+	quick_sort(ar, 0, arsize);
 	printf("\n");
 	dump_array(ar, arsize);
 

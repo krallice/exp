@@ -1,5 +1,6 @@
 ## O(n^2) -- The Worst
 ### Insertion Sort:
+#### Type: Insertion Sort
 
 Insertion sort works by considering the first index as sorted. Then, from the second index -> end of array:
 
@@ -24,6 +25,7 @@ Why even use:
 
 ## O(n log n) -- Getting better now!
 ### Merge Sort:
+#### Type: Merge Sort
 
 The merge sort algorithm closely follows the divide-and-conquer paradigm (based on recursion). Intuitively, it operates as follows:
 
@@ -49,6 +51,7 @@ Out of Place
 - - -
 
 ### Quick Sort:
+#### Type: Exchange Sort (Bubble, Comb)
 
 Quicksort, in Chapter 7, also sorts n numbers in place, but its worst-case running time is O(n^2). Its expected running time is O(n log n), however, and it generally outperforms heapsort in practice. Like insertion sort, quicksort has tight code, and so the hidden constant factor in its running time is small. It is a popular algorithm for sorting large input arrays.
 
