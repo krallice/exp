@@ -1,8 +1,10 @@
 CC=cc
 
-.PHONY: all linked
+.PHONY: all linked stack
 
-all: linked
+all: linked stack
 
 linked:
 	$(CC) -g -ansi -std=gnu99 -Wall linked.c -o linked
+stack:
+	$(CC) -g -ansi -std=gnu99 -Wall stack.c -o stack
