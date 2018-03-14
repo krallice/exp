@@ -41,15 +41,50 @@ int stack_push(stack *mystack, int value) {
 	}
 }
 
+int stack_peek(stack *mystack, int *value) {
+
+	if (stack_empty(mystack)) {
+		return 0;
+	} else {
+		*value = mystack->data[mystack->size - 1];
+		return 1;
+	}
+}
+
 int main(void) {
 
 	stack *mystack = create_stack();
-	if ( stack_push(mystack, 3) ) {
-		if ( ! stack_empty(mystack) ) {
-			printf("%d\n", mystack->data[0]);
-		}
-	} else {
+
+	if ( ! stack_push(mystack, 3) ) {
 		printf("Stack Full\n");
+		return 1;
 	}
+
+	if ( ! stack_push(mystack, 5) ) {
+		printf("Stack Full\n");
+		return 1;
+	}
+
+	int *v;
+
+	if ( stack_peek(mystack, v)) {
+		printf("Peek on Stack: %d\n", *v);
+	} else {
+		printf("Stack Empty\n");
+	}
+
+	//if ( stack_pop(mystack, v)) {
+		//printf("Peek on Stack: %d\n", *v);
+	//} else {
+		//printf("Stack Empty\n");
+	//}
+
+
+
+
+
+
+
+
 	return 0;
 }
