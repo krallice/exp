@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define STACK_SIZE 7 
+#define STACK_SIZE 1 
 
 typedef struct stack {
 	int *data;
@@ -24,6 +24,20 @@ stack *create_stack(void) {
 	return newstack;
 }
 
+int get_stack_size(stack *mystack) {
+
+	return mystack->size;
+}
+
+int grow_stack_size(stack *mystack) {
+
+	int newsize = (((get_stack_size(mystack) + 1) * 2) - 1);
+	printf("Resizing to %d (Actual: %d)\n", newsize, newsize + 1);
+	mystack->size = newsize;
+	mystack->data = (int *)realloc(mystack->data, newsize * sizeof(int));
+	return 1;
+}
+
 int stack_empty(stack *mystack) {
 
 	if (mystack->top == 0){
@@ -35,11 +49,20 @@ int stack_empty(stack *mystack) {
 int stack_push(stack *mystack, int value) {
 
 	if ( mystack->top <= mystack->size ) {
+		// Grow it:
 		mystack->top++;
 		mystack->data[mystack->top - 1] = value;
 		return 1;
 	} else {
-		return 0;
+		// Not enough room, try to grow and try again:
+		if (grow_stack_size(mystack)) {
+			mystack->top++;
+			mystack->data[mystack->top - 1] = value;
+			return 1;
+		} else {
+			// Couldn't be done :(
+			return 0;
+		}
 	}
 }
 
@@ -76,6 +99,7 @@ int main(void) {
 		}
 	}
 	printf("Finishing Pushing\n");
+	printf("Stack Size: %d\n", get_stack_size(mystack));
 
 	int v;
 	if ( stack_peek(mystack, &v) ) {
@@ -97,6 +121,18 @@ int main(void) {
 	} else {
 		printf("Stack Empty, Unable to Peek\n");
 	}
+
+	int i = 0;
+	while ( i < 50000 ) {
+		if ( ! stack_push(mystack, 2) ) {
+			printf("Stack Full, Unable to Push\n");
+		} else {
+			//printf("Pushed %d onto Stack\n", 2);
+		}
+		i++;
+	}
+	
+	getchar();
 
 	return 0;
 }
