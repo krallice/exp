@@ -13,12 +13,12 @@ stack *create_stack(void) {
 
 	stack *newstack = (stack*)malloc(sizeof(stack));
 
-	for (int i = 0; i < STACK_SIZE; i++) {
-		newstack->data[i] = 0;
-	}
+	//for (int i = 0; i < STACK_SIZE; i++) {
+		//newstack->data[i] = 0;
+	//}
+	//newstack->size = 0;
 
-	newstack->size = 0;
-
+	memset(newstack, 0, sizeof(stack));
 	return newstack;
 }
 
