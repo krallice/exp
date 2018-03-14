@@ -1,19 +1,17 @@
 CC=cc
 
-.PHONY: all insertion merge quick counting
-
 all: insertion merge quick counting
 
-insertion:
+insertion: insertion.c
 	$(CC) -g -ansi -std=gnu99 -Wall insertion.c -o insertion
 
-merge:
+merge: merge.c
 	$(CC) -g -ansi -std=gnu99 -Wall merge.c -o merge
 
-quick:
+quick: quick.c
 	$(CC) -g -ansi -std=gnu99 -Wall quick.c -o quick
 
-counting:
+counting: counting.c
 	$(CC) -g -ansi -std=gnu99 -Wall counting.c -o counting
 
 clean:
