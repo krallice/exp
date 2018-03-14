@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define STACK_SIZE 64
+#define STACK_SIZE 12
 
 typedef struct stack {
 	int data[STACK_SIZE];
@@ -41,6 +41,17 @@ int stack_push(stack *mystack, int value) {
 	}
 }
 
+int stack_pop(stack *mystack, int *value) {
+
+	if (stack_empty(mystack)) {
+		return 0;
+	} else {
+		*value = mystack->data[mystack->size - 1];
+		mystack->size--;
+		return 1;
+	}
+}
+
 int stack_peek(stack *mystack, int *value) {
 
 	if (stack_empty(mystack)) {
@@ -55,36 +66,35 @@ int main(void) {
 
 	stack *mystack = create_stack();
 
-	for ( int i = 1; i <= 12; i++ ) {
+	for (int i = 1; i <= 16; i++) {
 		if ( ! stack_push(mystack, i) ) {
-			printf("Stack Full\n");
-			return 1;
+			printf("Stack Full, Unable to Push\n");
 		} else {
 			printf("Pushed %d onto Stack\n", i);
 		}
 	}
-
 	printf("Finishing Pushing\n");
 
 	int v;
 	if ( stack_peek(mystack, &v) ) {
 		printf("Peek on Stack: %d\n", v);
 	} else {
-		printf("Stack Empty\n");
+		printf("Stack Empty, Unable to Peek\n");
 	}
 
-	//if ( stack_pop(mystack, v)) {
-		//printf("Peek on Stack: %d\n", *v);
-	//} else {
-		//printf("Stack Empty\n");
-	//}
+	for (int i = 0; i < 13; i++) {
+		if ( stack_pop(mystack, &v) ) {
+			printf("Popped off Stack: %d\n", v);
+		} else {
+			printf("Stack Empty, Unable to Pop\n");
+		}
+	}
 
-
-
-
-
-
-
+	if ( stack_peek(mystack, &v) ) {
+		printf("Peek on Stack: %d\n", v);
+	} else {
+		printf("Stack Empty, Unable to Peek\n");
+	}
 
 	return 0;
 }
