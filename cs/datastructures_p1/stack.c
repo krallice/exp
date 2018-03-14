@@ -55,20 +55,20 @@ int main(void) {
 
 	stack *mystack = create_stack();
 
-	if ( ! stack_push(mystack, 3) ) {
-		printf("Stack Full\n");
-		return 1;
+	for ( int i = 1; i <= 12; i++ ) {
+		if ( ! stack_push(mystack, i) ) {
+			printf("Stack Full\n");
+			return 1;
+		} else {
+			printf("Pushed %d onto Stack\n", i);
+		}
 	}
 
-	if ( ! stack_push(mystack, 5) ) {
-		printf("Stack Full\n");
-		return 1;
-	}
+	printf("Finishing Pushing\n");
 
-	int *v;
-
-	if ( stack_peek(mystack, v)) {
-		printf("Peek on Stack: %d\n", *v);
+	int v;
+	if ( stack_peek(mystack, &v) ) {
+		printf("Peek on Stack: %d\n", v);
 	} else {
 		printf("Stack Empty\n");
 	}
