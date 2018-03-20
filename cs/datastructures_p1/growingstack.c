@@ -31,7 +31,7 @@ int get_stack_size(stack *mystack) {
 
 int grow_stack_size(stack *mystack) {
 
-	int newsize = (((get_stack_size(mystack) * 2) + 1); // Double, ie (7 * 2) = 14, + 1 == 15 (16 elements)
+	int newsize = ((get_stack_size(mystack) * 2) + 1); // Double, ie (7 * 2) = 14, + 1 == 15 (16 elements)
 	printf("Resizing to %d (Actual: %d)\n", newsize, newsize + 1);
 	mystack->size = newsize;
 	mystack->data = (int *)realloc(mystack->data, newsize * sizeof(int)); // Resize
