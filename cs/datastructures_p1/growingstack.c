@@ -5,9 +5,9 @@
 #define STACK_SIZE 1 
 
 typedef struct stack {
-	int *data;
-	int size;
-	int top;
+	int *data; // our dynamically allocated data array; doubles in size with realloc() when required
+	int size; // actual size of stack, how many n items in stack
+	int top; // our stackpointer, points to the "top" of the stack's array index
 } stack;
 
 stack *create_stack(void) {
@@ -15,11 +15,11 @@ stack *create_stack(void) {
 	stack *newstack = (stack*)malloc(sizeof(stack));
 	memset(newstack, 0, sizeof(stack));
 
-	newstack->data = (int *)malloc(sizeof(int) * STACK_SIZE);
+	newstack->data = (int *)malloc(sizeof(int) * STACK_SIZE); // initial stack size of STACK_SIZE
 	memset(newstack->data, 0, (sizeof(int) * STACK_SIZE));
 
 	newstack->size = STACK_SIZE;
-	newstack->top = 0;
+	newstack->top = 0; // pointer to the very start of array
 
 	return newstack;
 }
@@ -31,10 +31,10 @@ int get_stack_size(stack *mystack) {
 
 int grow_stack_size(stack *mystack) {
 
-	int newsize = (((get_stack_size(mystack) + 1) * 2) - 1);
+	int newsize = (((get_stack_size(mystack) * 2) + 1); // Double, ie (7 * 2) = 14, + 1 == 15 (16 elements)
 	printf("Resizing to %d (Actual: %d)\n", newsize, newsize + 1);
 	mystack->size = newsize;
-	mystack->data = (int *)realloc(mystack->data, newsize * sizeof(int));
+	mystack->data = (int *)realloc(mystack->data, newsize * sizeof(int)); // Resize
 	return 1;
 }
 
@@ -48,8 +48,7 @@ int stack_empty(stack *mystack) {
 
 int stack_push(stack *mystack, int value) {
 
-	if ( mystack->top <= mystack->size ) {
-		// Grow it:
+	if ( mystack->top <= mystack->size ) { // If our pointer is within the bounds of the size:
 		mystack->top++;
 		mystack->data[mystack->top - 1] = value;
 		return 1;
