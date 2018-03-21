@@ -1,15 +1,28 @@
 CC=cc
+CFLAGS=-g -ansi -std=gnu99 -Wall
 
-all: linked stack growingstack linkedstack
+all: linked stack growingstack linkedstack queue
 
+
+# Basic Linked List Datastructure:
 linked: linked.c
-	$(CC) -g -ansi -std=gnu99 -Wall linked.c -o linked
-stack: stack.c
-	$(CC) -g -ansi -std=gnu99 -Wall stack.c -o stack
-growingstack: growingstack.c
-	$(CC) -g -ansi -std=gnu99 -Wall growingstack.c -o growingstack
+	$(CC) $(CFLAGS) linked.c -o linked
 
+
+# Stacks (Arrays and Linkedlists):
+stack: stack.c
+	$(CC) $(CFLAGS) stack.c -o stack
+growingstack: growingstack.c
+	$(CC) $(CFLAGS) growingstack.c -o growingstack
 linkedstack: linkedstack.c
-	$(CC) -g -ansi -std=gnu99 -Wall linkedstack.c -o linkedstack
+	$(CC) $(CFLAGS) linkedstack.c -o linkedstack
+
+
+# Queues:
+queue: queue.c
+	$(CC) $(CFLAGS) queue.c -o queue
+
+
 clean:
 	rm -vrf stack linked growingstack linkedstack
+	rm -vrf queue
