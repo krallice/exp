@@ -1,7 +1,7 @@
 CC=cc
 CFLAGS=-g -ansi -std=gnu99 -Wall
 
-all: linked stack growingstack linkedstack queue
+all: linked stack growingstack linkedstack queue lqueue
 
 
 # Basic Linked List Datastructure:
@@ -21,8 +21,9 @@ linkedstack: linkedstack.c
 # Queues:
 queue: queue.c
 	$(CC) $(CFLAGS) queue.c -o queue
-
+lqueue: lqueue.c
+	$(CC) $(CFLAGS) lqueue.c -o lqueue
 
 clean:
 	rm -vrf stack linked growingstack linkedstack
-	rm -vrf queue
+	rm -vrf queue lqueue
