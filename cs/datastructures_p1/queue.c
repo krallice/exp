@@ -10,6 +10,7 @@ typedef struct q {
 	int head;
 	int tail;
 	int size;
+	int used;
 } q;
 
 void dump_array(int ar[], int size) {
@@ -25,35 +26,27 @@ q *init_new_queue(void) {
 	q *myq = (q*)malloc(sizeof(q));
 	memset(myq, 0, sizeof(q));
 
-	myq->size = Q_SIZE - 1;
+	myq->size = Q_SIZE;
 	myq->head = myq->tail = 0;
+	myq->used = 0;
 
 	return myq;
 }
 
 int enqueue(q *myq, int key) {
 
-	printf("Head:%d, Cur Tail:%d, Next Tail:%d\n", myq->head, myq->tail, ((myq->tail + 1) % 8));
-
 	// If we have NOT ran out of room:
-	//if ( myq->head != myq->tail + 1) {
-	if ( myq->head != ((myq->tail % (myq->size + 1)) + 1) ) {
+	if ( myq->used != myq->size ) {
 		
 		// Assign:
 		myq->queue[myq->tail] = key;
 
 		// If tail is at the end, wrap around, otherwise increment:
-		if ( myq->tail == myq->size ) {
-			printf("RESET\n");
-			myq->tail = 0;
-		} else {
-			myq->tail++;
-		}
-
+		myq->tail = (myq->tail + 1) % (myq->size);
+		myq->used++;
 		return 1;
 
 	} else {
-
 		// Overflow:
 		return 0;
 	}
@@ -62,27 +55,22 @@ int enqueue(q *myq, int key) {
 int dequeue(q *myq, int *key) {
 
 	// If head and tail are the same, we are out of elements:
-	if ( myq->head != myq->tail ) { 
+	if ( myq->used != 0 ) { 
 
 		// Return our key:
 		*key = (myq->queue[myq->head]);
 
 		//Increment the key towards the tail, wrap if nessesary:
-		if (myq->head == myq->size) {
-			myq->head = 0;
-		} else {
-			myq->head++;
-		}
-
+		myq->head = (myq->head + 1) % (myq->size);
+		myq->used--;
 		return 1;
 
-	// Underflow:
 	} else {
+		// Underflow:
 		return 0;
 	}
 
 }
-
 
 int main(void) {
 
@@ -90,31 +78,28 @@ int main(void) {
 
 	int rp = NULL;
 
-	for (int i = 1; i < 10; i++){
+	for (int i = 1; i < 18; i++){
 		if (enqueue(myq, i*200)) {
 			printf("Enqueued Key: %d\n", i*200);
 		} else {
 			printf("Overflow\n");
 		}
+		dump_array(myq->queue, myq->size);
 	}
 
-	/* for (int i = 1; i < 17; i++){
+	printf("DEQUEUE TIME\n");
+	printf("DEQUEUE TIME\n");
+	printf("DEQUEUE TIME\n");
+
+	for (int i = 1; i < 17; i++){
 		if (dequeue(myq, &rp)) {
-			printf("Dequeud Key: %d\n", rp);
+			printf("Dequeued Key: %d\n", rp);
 		} else {
 			printf("Underflow .. Nothing Left\n");
 		}
+		dump_array(myq->queue, myq->size);
 	}
 
-	for (int i = 1; i < 17; i++){
-		if (enqueue(myq, ((i+12)*3))) {
-			printf("Enqueued Key: %d\n", ((i+12)*3));
-		} else {
-			printf("Overflow Blastinnn\n");
-		}
-	}
-
-	*/
-	dump_array(myq->queue, myq->size + 1);
+	dump_array(myq->queue, myq->size);
 	return 0;
 }
