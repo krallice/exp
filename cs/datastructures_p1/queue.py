@@ -2,6 +2,8 @@
 
 class Queue(object):
 
+        """ Chump's Array (Native Python Primitives """
+
         def __init__(self):
 
                 self.queue = list()
@@ -16,67 +18,76 @@ class Queue(object):
 
 class FixedQueue(object):
 
-        """ Primitive Implementation using an Array. Logic play """
+        """ Badass Implementation using an Array. Logic play """
 
         def __init__(self, size):
 
-                self.queue = list()
-                for i in range(size+1):
-                        self.queue.append(None)
+            self.queue = list()
+            for i in range(size):
+                    self.queue.append(None)
 
-                self.size = size
-                self.head = 0
-                self.tail = 0
+            self.size = size
+
+            # Our used size:
+            self.used = 0
+
+            # Pointers to either index end of the queue:
+            self.head = 0
+            self.tail = 0
 
         def enqueue(self, key):
 
-                if ((self.head + 1) % (self.size)) != self.tail:
+            # We still have room?:
+            if self.used != self.size:
 
-                        self.queue[self.head] = key
+                # Insert:
+                self.queue[self.tail] = key
 
-                        self.head = self.head + 1
+                # Increment and roll head:
+                self.tail = (self.tail + 1) % self.size
 
-                        if self.head == self.size - 1:
-                                self.head = 0
+                # Used one more slot:
+                self.used = self.used + 1
 
-                else:
-                        # Overflow
-                        print "Overflow!!"
-                        raise IndexError
+            else:
+                print "OVERFLOW"
+                #raise IndexError
 
         def dequeue(self):
 
-                if self.tail != self.head:
+            # We have stuff left in the queue:?
+            if self.used != 0:
 
-                        retval = self.queue[self.tail]
-                        self.tail = self.tail + 1
-                        # Wrap Around:
-                        if self.tail == self.size - 1:
-                                self.tail = 0
-                        return retval
+                # Grab our value:
+                retval = self.queue[self.head]
 
-                else:
-                        # Underflow:
-                        print "Underflow!!"
-                        raise IndexError
+                # Move head up and roll back to zero if required:
+                self.head = (self.head + 1) % self.size
+
+                self.used = self.used - 1
+                return retval
+
+            else:
+                print "UNDERFLOW"
+                #raise IndexError
 
 def test_fixed_queue_overflow():
 
         queue = FixedQueue(4)
-        print queue.queue
 
-        queue.enqueue("dog")
-        queue.enqueue("rat")
-        queue.enqueue("mat")
-        queue.enqueue("red")
-        print queue.queue
-        print queue.dequeue()
-        print queue.dequeue()
-        queue.enqueue("green")
-        queue.enqueue("yellow")
-        queue.enqueue("wibblewobbly")
-        print queue.queue
+        for s in ["jubilat", "blue as blue", "immersion trench reverie", "old apline pang", "god alone"]:
+            queue.enqueue(s)
+            print queue.queue
+            print "Head: %s ; Tail: %s" % (queue.head, queue.tail)
 
+        print "DEQUEUE TIME"
+        print "DEQUEUE TIME"
+        print "DEQUEUE TIME"
+
+        for i in range(6):
+            print queue.dequeue()
+            print queue.queue
+            print "Head: %s ; Tail: %s" % (queue.head, queue.tail)
 
 def test_fixed_queue_one():
 
