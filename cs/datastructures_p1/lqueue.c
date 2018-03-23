@@ -64,7 +64,9 @@ int dequeue(lq *mylq, int *key) {
 	if ( mylq->head != NULL ) {
 		//printf("Head Node: %p\t Next to Head Node: %p\n", mylq->head, mylq->head->next);
 		*key = mylq->head->key;
+		lqnode *dequeued = mylq->head;
 		mylq->head = mylq->head->next;
+		free(dequeued);
 		return 1;
 
 	} else {
