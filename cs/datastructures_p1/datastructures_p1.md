@@ -1,3 +1,19 @@
+## Stacks
+
+A stack is a basic data structure that can be logically thought as linear structure represented by a real physical stack or pile, a structure where insertion and deletion of items takes place at one end called top of the stack. The stack implements a last-in, first-out, or **LIFO**, policy. Can be implemented through linked lists or arrays.
+
+
+#### Defined Methods:
+```
+Push - adds an element to the collection
+Pop - removes the most recently added element from the top.
+Peek - check value (at the 'top') without removing the value
+isEmpty? isFull?
+```
+
+![alt text](https://upload.wikimedia.org/wikipedia/commons/b/b4/Lifo_stack.png "Stack")
+'
+
 ## Linked Lists
 ### Basic Linked Lists
 
