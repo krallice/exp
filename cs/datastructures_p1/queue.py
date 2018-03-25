@@ -50,8 +50,8 @@ class FixedQueue(object):
                 self.used = self.used + 1
 
             else:
-                print "OVERFLOW"
-                #raise IndexError
+                #print "OVERFLOW"
+                raise IndexError
 
         def dequeue(self):
 
@@ -68,15 +68,18 @@ class FixedQueue(object):
                 return retval
 
             else:
-                print "UNDERFLOW"
-                #raise IndexError
+                #print "UNDERFLOW"
+                raise IndexError
 
 def test_fixed_queue_overflow():
 
         queue = FixedQueue(4)
 
         for s in ["jubilat", "blue as blue", "immersion trench reverie", "old apline pang", "god alone"]:
-            queue.enqueue(s)
+            try:
+                queue.enqueue(s)
+            except IndexError:
+                print "--> OVERFLOW ERROR"
             print queue.queue
             print "Head: %s ; Tail: %s" % (queue.head, queue.tail)
 
@@ -85,7 +88,10 @@ def test_fixed_queue_overflow():
         print "DEQUEUE TIME"
 
         for i in range(6):
-            print queue.dequeue()
+            try:
+                print queue.dequeue()
+            except IndexError:
+                print "--> UNDERFLOW ERROR"
             print queue.queue
             print "Head: %s ; Tail: %s" % (queue.head, queue.tail)
 
