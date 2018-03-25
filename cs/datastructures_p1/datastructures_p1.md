@@ -13,6 +13,15 @@ isEmpty? isFull?
 
 ![alt text](https://upload.wikimedia.org/wikipedia/commons/b/b4/Lifo_stack.png "Stack")
 '
+## Queues
+
+In a queue, the element deleted is always the one that has been in the set for the longest time: the queue implements a first-in, first-out, or **FIFO**, policy
+
+#### Defined Methods:
+```
+Enqueue - adds an element to the end of the collection
+Dequeue - pops an element off the front of the collection
+```
 
 ## Linked Lists
 ### Basic Linked Lists
