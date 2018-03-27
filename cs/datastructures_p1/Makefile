@@ -1,7 +1,8 @@
 CC=cc
 CFLAGS=-g -ansi -std=gnu99 -Wall
 
-all: linked stack growingstack linkedstack queue lqueue
+BINS=linked stack growingstack linkedstack queue lqueue
+all: $(BINS)
 
 # Basic Linked List Datastructure:
 linked:	%:%.c
@@ -23,5 +24,4 @@ lqueue: %:%.c
 
 .PHONY : clean
 clean:
-	@- $(RM) stack linked growingstack linkedstack
-	@- $(RM) queue lqueue
+	@- $(RM) $(BINS)
