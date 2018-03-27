@@ -3,27 +3,25 @@ CFLAGS=-g -ansi -std=gnu99 -Wall
 
 all: linked stack growingstack linkedstack queue lqueue
 
-
 # Basic Linked List Datastructure:
-linked: linked.c
-	$(CC) $(CFLAGS) linked.c -o linked
-
+linked:	%:%.c
+	$(CC) $(CFLAGS) $^ -o $@
 
 # Stacks (Arrays and Linkedlists):
-stack: stack.c
-	$(CC) $(CFLAGS) stack.c -o stack
-growingstack: growingstack.c
-	$(CC) $(CFLAGS) growingstack.c -o growingstack
-linkedstack: linkedstack.c
-	$(CC) $(CFLAGS) linkedstack.c -o linkedstack
-
+stack: %:%.c
+	$(CC) $(CFLAGS) $^ -o $@
+growingstack: %:%.c
+	$(CC) $(CFLAGS) $^ -o $@
+linkedstack: %:%.c
+	$(CC) $(CFLAGS) $^ -o $@
 
 # Queues:
-queue: queue.c
-	$(CC) $(CFLAGS) queue.c -o queue
-lqueue: lqueue.c
-	$(CC) $(CFLAGS) lqueue.c -o lqueue
+queue: %:%.c
+	$(CC) $(CFLAGS) $^ -o $@
+lqueue: %:%.c
+	$(CC) $(CFLAGS) $^ -o $@
 
+.PHONY : clean
 clean:
-	rm -vrf stack linked growingstack linkedstack
-	rm -vrf queue lqueue
+	@- $(RM) stack linked growingstack linkedstack
+	@- $(RM) queue lqueue
