@@ -1,18 +1,23 @@
 CC=cc
+CFLAGS=-g -ansi -std=gnu99 -Wall
 
-all: insertion merge quick counting
+BINS=insertion merge quick counting
+all: $(BINS)
 
-insertion: insertion.c
-	$(CC) -g -ansi -std=gnu99 -Wall insertion.c -o insertion
+# O(n) Sorting:
+insertion: %:%.c
+	$(CC) $(CFLAGS) $^ -o $@
 
-merge: merge.c
-	$(CC) -g -ansi -std=gnu99 -Wall merge.c -o merge
+# O(n log n); Divide and Conquer:
+merge: %:%.c
+	$(CC) $(CFLAGS) $^ -o $@
+quick: %:%.c
+	$(CC) $(CFLAGS) $^ -o $@
 
-quick: quick.c
-	$(CC) -g -ansi -std=gnu99 -Wall quick.c -o quick
+# Non Comparison Sorting:
+counting: %:%.c
+	$(CC) $(CFLAGS) $^ -o $@
 
-counting: counting.c
-	$(CC) -g -ansi -std=gnu99 -Wall counting.c -o counting
-
+.PHONY: clean
 clean:
-	rm -rf insertion merge quick counting
+	@- $(RM) $(BINS)

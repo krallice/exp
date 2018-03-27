@@ -1,10 +1,14 @@
 CC=cc
 CFLAGS=-g -ansi -std=gnu99 -Wall
 
-all: hashchain
+BINS=hashchain hashchain2
+all: $(BINS)
 
-hashchain: hashchain.c hashchain2.c
-	$(CC) $(CFLAGS) hashchain.c -o hashchain
-	$(CC) $(CFLAGS) hashchain2.c -o hashchain2
+hashchain: %:%.c 
+	$(CC) $(CFLAGS) $^ -o $@
+hashchain2: %:%.c
+	$(CC) $(CFLAGS) $^ -o $@
+
+.PHONY: clean
 clean:
-	rm -vrf hashchain hashchain2
+	@- $(RM) $(BINS)
