@@ -1,7 +1,7 @@
 # experimental
-repo datastsructures/algos/patterns 
+repo of goodies (and baddies) 
 
-## cs
+## Reference Implementations + Documentation
 
 + ./cs - Structured learning including datastructures and algos. Progressively documented.
 
