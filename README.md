@@ -1,13 +1,17 @@
 # experimental
-refuse pile of exercises + junk
+repo datastsructures/algos/patterns 
 
-### junk
+## cs
 
-+ ./monkeys - monkeys with typewriters simulators
++ ./cs - Structured learning including datastructures and algos. Progressively documented.
+
+## junk
+
+*not worth keeping, not worth deleting*
 
 ### algorithms
 
-+ ./sorting - sorting algorithms
++ ./sorting - Incomplete collection of sorting algorithms. Built a much better reference in ./cs
 
 ### design patterns
 
@@ -15,6 +19,4 @@ refuse pile of exercises + junk
 + ./factory - a couple of python factory examples
 + ./gumball - state machine
 
-### cs
-
-+ ./cs - more structured learning
++ ./monkeys - monkeys with typewriters simulators
