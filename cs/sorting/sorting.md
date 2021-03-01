@@ -6,10 +6,11 @@ Insertion sort works by considering the first index as sorted. Then, from the se
 
 ```
 for i = second_index -> end_of_array:
-    look at array[i]:
-    inner loop j = i; while j > 0 and out of order:
-        descend in comparisons from j & (j - 1). If out of order, swap.
+    key = array[i]:
+    inner loop j = i-1; while j > 0 and array[j] > key:
+    	array[j+1] = array[j] #shifting the 'sorted sub array from 0..i-1 up one place progressively
         decrement j
+    array[j+1] = key # finally place our unsorted value into the correct position of our subarray 
 ```
 Complexity = O(n^2) (Same as bubble == bad). Represents an incremental approach to Algorithms.
 
