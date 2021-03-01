@@ -24,6 +24,22 @@ Why even use:
 
 - - -
 
+### Bubble Sort:
+
+Values "bubble" up to the top of the array. Included for completeness, but do not use, use insertion.
+
+```
+ 26         for (int i = asize - 1; i > 0; i--) { 
+ 25                 for (int j = 0; j < i; j++) { 
+ 24                         if (array[j] > array[j+1]) { 
+ 23                                 swap(&array[j], &array[j+1]);
+ 22                         } 
+ 21                 } 
+ 20         } 
+ ```
+
+- - -
+
 ## O(n log n) -- Getting better now!
 ### Merge Sort:
 ```
