@@ -40,6 +40,26 @@ Values "bubble" up to the top of the array. Included for completeness, but do no
 
 - - -
 
+### Selection Sort:
+
+Again, not great. Scan through array from i..end, marking position of minimum value, swap array[i] and array[min]. Generally performs worse than Insertion sort.
+
+```
+  2         int minpos;
+  3         
+  4         for (int i = 0; i < asize; i++) {
+  5                 minpos = i;
+  6                 for (int j = i; j < asize; j++) {
+  7                         if (array[j] < array[minpos]) {
+  8                                 minpos = j;
+  9                         }
+ 10                 }
+ 11                 swap(&(array[i]),&(array[minpos]));
+ 12         }
+ ```
+ 
+ - - - 
+
 ## O(n log n) -- Getting better now!
 ### Merge Sort:
 ```
