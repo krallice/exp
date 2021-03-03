@@ -1,7 +1,7 @@
 CC=cc
 CFLAGS=-g -ansi -std=gnu99 -Wall
 
-BINS=insertion merge quick counting comparison
+BINS=insertion merge quick counting comparison heaparray
 all: $(BINS)
 
 # O(n) Sorting:
@@ -11,6 +11,8 @@ comparison: %:%.c
 	$(CC) $(CFLAGS) $^ -o $@
 
 # O(n log n); Divide and Conquer:
+heaparray: %:%.c
+	$(CC) $(CFLAGS) $^ -o $@
 merge: %:%.c
 	$(CC) $(CFLAGS) $^ -o $@
 quick: %:%.c
