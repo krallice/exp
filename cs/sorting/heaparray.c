@@ -71,15 +71,17 @@ void do_siftdown(int *array, int start, int end) {
 
 void heapify(int *array, const int asize) {
 
-	// Start at last parent node:
-	//              0
-	//            /   \
-	//           0     0
-	//          / \   / \
-	//     --> 0   0 0   0
-	//        / \
-	//       0   0
-	int start = (asize - 2) / 2;
+	/*
+	  Start at last parent node:
+	                0
+	              /   \
+	             0     0
+	            / \   / \
+	       --> 0   0 0   0
+	          / \
+	         0   0
+	*/
+	int start = (asize) / 2;
 
 	while (start >= 0) {
 		// Sift down:
@@ -110,7 +112,7 @@ void do_heapsort(int *array, const int asize) {
 int main(int argc, char** argv) {
 
 	int *array = NULL;
-	const int asize = 5;
+	const int asize = 8;
 
 		printf("\n");
 		array = init_random_array(asize);
