@@ -22,7 +22,7 @@ stack *create_stack(void) {
 	return newstack;
 }
 
-int stack_empty(stack *mystack) {
+int stack_empty(const stack *mystack) {
 
 	if (mystack->size == 0){
 		return 1;
@@ -52,7 +52,7 @@ int stack_pop(stack *mystack, int *value) {
 	}
 }
 
-int stack_peek(stack *mystack, int *value) {
+int stack_peek(const stack *mystack, int *value) {
 
 	if (stack_empty(mystack)) {
 		return 0;
