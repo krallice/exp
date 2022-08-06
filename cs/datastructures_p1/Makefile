@@ -1,7 +1,7 @@
 CC=cc
 CFLAGS=-g -ansi -std=gnu99 -Wall
 
-BINS=linked stack growingstack linkedstack queue lqueue rpn_lstack
+BINS=linked stack growingstack linkedstack queue lqueue rpn_lstack circularbuffer
 all: $(BINS)
 
 # Basic Linked List Datastructure:
@@ -17,6 +17,8 @@ linkedstack: %:%.c
 	$(CC) $(CFLAGS) $^ -o $@
 rpn_lstack: %:%.c
 	$(CC) $(CLFAGS) $^ -o $@
+circularbuffer: %:%.c
+	$(CC) $(CFLAGS) $^ -o $@
 
 # Queues:
 queue: %:%.c
