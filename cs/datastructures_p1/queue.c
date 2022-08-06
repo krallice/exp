@@ -76,7 +76,7 @@ int main(void) {
 
 	q *myq = init_new_queue();
 
-	int rp = NULL;
+	int rp = 0;
 
 	for (int i = 1; i < 18; i++){
 		if (enqueue(myq, i*200)) {

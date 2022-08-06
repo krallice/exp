@@ -77,7 +77,7 @@ int dequeue(lq *mylq, int *key) {
 int main(void) {
 
 	lq *mylq = init_new_queue();
-	int rp = NULL;
+	int rp = 0;
 
 	for (int i = 0; i < 16; i++){
 		enqueue(mylq, i);
